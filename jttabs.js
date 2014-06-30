@@ -14,7 +14,8 @@
         "speed": 100,
         "Before": null, 
         "After": null,
-        "defaultTab": ""
+        "defaultTab": "",
+        "hashAlways": false
     };
 
     base.options = $.extend({},$.jttabs.defaultOptions, options);
@@ -50,13 +51,13 @@
 
     base.tabs = function(el) {
 
-        window.location.hash=el;
-
         var curCont = base.Sel.find("li.active").data('content');
 
         base.stabs.removeClass("active").unbind().one('click', 
             function(){
-                base.tabs($(this).data('content'));
+                var c = $(this).data('content');
+                window.location.hash=c;
+                base.tabs(c);
             });
 
         base.Sel.find("[data-content='" + el + "']").addClass("active").unbind();
