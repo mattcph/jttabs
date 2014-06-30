@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="jttabs.css" media="screen" />
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="jttabs.js"></script>
+<title>JT TABS</title>
+</head>
+<body>
+
+<div id="jt-tabgroup" class="jt-tabgroup">
+
+    <ul class="jttabs">
+        <li data-content="general">
+            General
+        </li>
+        <li data-content="account">
+            Account
+        </li>
+        <li data-content="history">
+            History
+        </li>
+    </ul>
+
+    <div class="jt-content-wrapper">
+
+        <div id="general" class="jt-tabcontent jt-tabhide" data-loaded="">
+        <p>General Content Not Ajax</p>
+        <p>General Content Not Ajax</p>
+        <p>General Content Not Ajax</p>
+        <p>General Content Not Ajax</p>
+        <p>General Content Not Ajax</p>
+        <p>General Content Not Ajax</p>
+        <p>General Content Not Ajax</p>
+        </div>
+
+        <div id="account" class="jt-tabcontent jt-tabhide" data-loaded="">
+        <p>General Content 2</p>
+        <p>General Content Not Ajax</p>
+        <p>General Content Not Ajax</p>
+        </div>
+
+        <div id="history" class="jt-tabcontent jt-tabhide" data-src="text3.html" data-loaded=""></div>
+
+    </div>
+</div>
+
+<script>
+
+$(document).ready(function(){
+    $("#jt-tabgroup").jttabs({
+        Before: function(el,url){
+            var xhr = $.ajax({
+                url: url
+            }).success(function(data){
+                $("#"+el).html(data);
+            }).fail(function(data){
+                $("#"+el).html("Could Not Load Data"); 
+            });
+        },
+        After: function(el) {
+        },
+        defaultTab: 'account',
+        speed: 300
+    });
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+.jt-tabhide {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.jt-tabgroup {
+    background-color: #c8d7dc;
+}
+
+.jt-tabgroup ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+    background-color: #4c6d8a;
+}
+
+.jt-tabgroup li {
+    float: left;
+    display: block;
+    border-right: 2px solid #fff;
+    background-color: #4c788a;
+    color: #fff;
+    min-width: 100px;
+    font-size: 1em;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.jt-tabgroup li.active {
+    background-color: #c8d7dc;
+    color: #000;
+    cursor: default;
+}
+
+.jt-tabgroup .noselect {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+
