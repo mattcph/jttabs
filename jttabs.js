@@ -14,8 +14,7 @@
         "speed": 100,
         "Before": null, 
         "After": null,
-        "defaultTab": "",
-        "hashAlways": false
+        "defaultTab": ""
     };
 
     base.options = $.extend({},$.jttabs.defaultOptions, options);
@@ -27,8 +26,8 @@
         var jttab = options.defaultTab.length?options.defaultTab:"";
 
         var khash = window.location.hash,
-                    deftab = $(base.stabs[0]).data('content'),
-        s=0;
+            deftab = $(base.stabs[0]).data('content'),
+            s = 0;
 
         if(khash.length) {
             for(var i=0; i<base.stabs.length; i++) {
@@ -43,7 +42,7 @@
         if(jttab.length===0) {
             jttab = deftab;
         }
-        $("#"+jttab).removeClass('jt-tabhide');
+        $("#_"+jttab).removeClass('jt-tabhide');
         base.loadtab(jttab);
         base.blocker(base.stabs);
         base.tabs(jttab);
@@ -54,14 +53,13 @@
         var curCont = base.Sel.find("li.active").data('content');
 
         base.stabs.removeClass("active").unbind().one('click', 
-            function(){
+            function(e){
+                e.preventDefault();
                 var c = $(this).data('content');
-                window.location.hash=c;
+                window.location.hash=c.replace('_', '');
                 base.tabs(c);
-            });
-
+        });
         base.Sel.find("[data-content='" + el + "']").addClass("active").unbind();
-
         base.loadtab(el,curCont);
     };
 
@@ -81,11 +79,11 @@
 
         for(var i=0; i<base.stabs.length; i++) {
             var cid = $(base.stabs[i]).data('content');
-            document.getElementById(cid).style.display='none';
-            $('#'+cid).stop(true,true);
+            document.getElementById("_"+cid).style.display='none';
+            $('#_'+cid).stop(true,true);
         }
 
-        var $el = $('#'+el);
+        var $el = $('#_'+el);
         if($el.data('src')!=undefined &&
            $el.data('loaded').val!=1) {
             $el.data('loaded',{val: 1});
