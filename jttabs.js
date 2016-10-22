@@ -1,4 +1,4 @@
-// Hacked in VIM by Matt Hardy <matt@webhaven.eu> Copyright 2014
+// Hacked in VIM by Matt Hardy <matt@webhaven.eu>
 // Personal or Commercial Use is at own risk
 // Warranty or support is not included
 (function($) {
